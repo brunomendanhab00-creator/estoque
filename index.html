@@ -724,9 +724,7 @@ materiais.forEach(item => {
 
 fetch("https://script.google.com/macros/s/AKfycbwd7Pbgkxn8qkFdHjwLfGYEUG85yLGWQRYMJw0waWcWXiN4aIKybOnENm0G4EGZoJbDMA/exec",", {
   method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
+ 
   body: JSON.stringify({
     tipo: dados.tipo,
     usuario: dados.usuario,
