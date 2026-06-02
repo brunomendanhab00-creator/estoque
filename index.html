@@ -722,31 +722,22 @@ function enviarParaPlanilha(materiais){
 
 materiais.forEach(item => {
 
-fetch(
-"https://github.com/brunomendanhab00-creator/controledeestoque.git",
-
-{
-
-method:"POST",
-
-headers:{
-"Content-Type":"application/json"
-},
-
-body:JSON.stringify({
-
-tipo:dados.tipo,
-usuario:dados.usuario,
-material:item.material,
-quantidade:item.quantidade,
-data:new Date().toLocaleString()
-
+fetch("https://script.google.com/macros/s/AKfycbwWkLUq6bwO98n4er-yBWdVxuqHvRAdi8hCOJzT8h0vxU72iZ3WfeqZNrx2atrmS8fFBQ/exec", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    tipo: dados.tipo,
+    usuario: dados.usuario,
+    material: item.material,
+    quantidade: item.quantidade,
+    data: new Date().toLocaleString()
+  })
 })
-
-})
-
-.then(r => console.log("Enviado"))
-.catch(err => console.log(err));
+.then(response => response.text())
+.then(data => console.log("Resposta:", data))
+.catch(error => console.log("Erro:", error));
 
 });
 }
