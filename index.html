@@ -724,7 +724,10 @@ materiais.forEach(item => {
 
 fetch("https://script.google.com/macros/s/AKfycbwd7Pbgkxn8qkFdHjwLfGYEUG85yLGWQRYMJw0waWcWXiN4aIKybOnENm0G4EGZoJbDMA/exec", {
   method: "POST",
- 
+  mode: "no-cors", // ✅ ESSENCIAL
+  headers: {
+    "Content-Type": "application/json"
+  },
   body: JSON.stringify({
     tipo: dados.tipo,
     usuario: dados.usuario,
@@ -733,13 +736,12 @@ fetch("https://script.google.com/macros/s/AKfycbwd7Pbgkxn8qkFdHjwLfGYEUG85yLGWQR
     data: new Date().toLocaleString()
   })
 })
-.then(response => response.text())
-.then(data => console.log("Resposta:", data))
-.catch(error => console.log("Erro:", error));
+
+.then(() => console.log("Enviado")) // ✅ sem response
+.catch(error => console.log("Erro ao enviar:", error));
 
 });
 }
-
 function criarCards(){
 
 let divUsuarios =
